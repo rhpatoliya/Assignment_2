@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/product_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5sp"
+        android:gravity="center"
+        android:hint="Product Type"
+
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/keypad"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+
+        android:id="@+id/manager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_500"
+        android:text="Manager"
+        app:layout_constraintBottom_toTopOf="@+id/total"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/keypad"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:gravity="center"
+        android:stretchColumns="1"
+
+        app:layout_constraintBottom_toTopOf="@id/quentity"
+        app:layout_constraintEnd_toStartOf="@id/guideline6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_type">
+
+        <TableRow>
+
+            <Button
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="1" />
+
+            <Button
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="2" />
+
+            <Button
+                android:textColor="@color/black"
+
+                android:onClick="digit_clicked"
+                android:text="3" />
+
+
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="4" />
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="5" />
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="6" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="7" />
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="8" />
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="9" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="clear_clicked"
+                android:text="C" />
+
+            <Button
+
+                android:textColor="@color/black"
+                android:onClick="digit_clicked"
+                android:text="0" />
+
+
+        </TableRow>
+    </TableLayout>
+
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Total"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/keypad" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
+        android:background="@android:color/holo_green_dark"
+        android:onClick="buy_clicked"
+        android:text="Buy"
+        app:layout_constraintTop_toBottomOf="@id/total"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/keypad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/keypad" />
+
+    <TextView
+        android:id="@+id/quentity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Quantity"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keypad" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/keypad"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7400821" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="822dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.7518248" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
