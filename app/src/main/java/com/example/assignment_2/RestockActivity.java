@@ -24,7 +24,7 @@ public class RestockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restock);
-        stock = this.getIntent().getExtras().getParcelableArrayList("stock");
+        stock = ((myApp)getApplication()).getManager().productList; //this.getIntent().getExtras().getParcelableArrayList("stock");
         customAdapter = new Product_List_Adapter(getApplicationContext(), stock);
         simpleList = (ListView) findViewById(R.id.list);
         simpleList.setAdapter(customAdapter);
@@ -42,17 +42,28 @@ public class RestockActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String newValue = newQ.getText().toString();
                 if (selectedIndex != -1 && !newValue.isEmpty()){
-                    stock.get(selectedIndex).setProduct_quentity( stock.get(selectedIndex).getProduct_quentity() + Integer.parseInt(newValue));
+                    int newQu = stock.get(selectedIndex).getProduct_quentity() + Integer.parseInt(newValue);
+                    stock.get(selectedIndex).setProduct_quentity(newQu );
                     customAdapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(),"Set the stock of " + stock.get(selectedIndex).getProduct_Name() + "to be the " + newQu,Toast.LENGTH_LONG).show();
+                    newQ.setText("");
 
-                    Intent returnIntent = new Intent();
-                    returnIntent.putParcelableArrayListExtra("stock",stock);
-                    setResult(Activity.RESULT_OK,returnIntent);
+//                    Intent returnIntent = new Intent();
+//                    returnIntent.putParcelableArrayListExtra("stock",stock);
+//                    setResult(Activity.RESULT_OK,returnIntent);
                     //finish();
                 }
                 else {
                     Toast.makeText(getApplicationContext(),"All fields are REQUIERED",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        Button cancel = (Button) findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

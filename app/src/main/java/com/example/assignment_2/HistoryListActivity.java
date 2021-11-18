@@ -25,13 +25,13 @@ public class HistoryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history_list);
         recyclerView = (RecyclerView) findViewById(R.id.history_list);
         hintMsg = (TextView) findViewById(R.id.nohistoryText);
-
-        if ((this.getIntent().hasExtra("historyList"))) {
-            listOfHistory = this.getIntent().getExtras().getParcelableArrayList("historyList");
-        }
-        if (listOfHistory.size() == 0) {
-            hintMsg.setVisibility(View.VISIBLE);
-        } else {
+        listOfHistory = ((myApp)getApplication()).getManager().listOfHistory;
+//        if ((this.getIntent().hasExtra("historyList"))) {
+//            listOfHistory = this.getIntent().getExtras().getParcelableArrayList("historyList");
+//        }
+//        if (listOfHistory.size() == 0) {
+//            hintMsg.setVisibility(View.VISIBLE);
+//        } else {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(new CustomHistoryAdapter(this, listOfHistory,
                     new CustomHistoryAdapter.OnItemClickListener() {
@@ -45,5 +45,5 @@ public class HistoryListActivity extends AppCompatActivity {
             ));
             // recyclerView.setOnClickListener(new AdapterView.OnItemClickListener());
         }
-    }
+
 }

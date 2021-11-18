@@ -12,6 +12,7 @@ public class HistoryProduct extends Product implements Parcelable {
     public HistoryProduct(String product_Name, double product_Price, int product_quentity, String purshaseDate) {
         super(product_Name, product_Price, product_quentity);
         this.purshaseDate = purshaseDate;
+
     }
 
     protected HistoryProduct(Parcel in) {

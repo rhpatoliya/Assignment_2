@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Store_Manager {
     public ArrayList<Product> productList;
+    ArrayList<HistoryProduct> listOfHistory = new ArrayList<>(0);
 
     public Store_Manager() {
 

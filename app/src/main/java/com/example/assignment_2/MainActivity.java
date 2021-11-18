@@ -26,10 +26,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity  {
 
-    static Store_Manager manager =  new Store_Manager();
-
-     ArrayList<HistoryProduct> listOfHistory = new ArrayList<>(10);
-
+    Store_Manager manager;
+    ArrayList<HistoryProduct> listOfHistory; //= new ArrayList<>(10);
     ListView simpleList;
     TextView product_name;
     TextView selected_Quentity;
@@ -43,21 +41,15 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        if (savedInstanceState == null || !savedInstanceState.containsKey("stock"))
-//        {
-//            manager  = new Store_Manager();
-//        }
-//        else
-//            manager.productList = savedInstanceState.getParcelableArrayList("stock");
-
         setContentView(R.layout.activity_main);
+
+        manager =  ((myApp) getApplication()).getManager();
+        listOfHistory = manager.listOfHistory;
         selected_Quentity = (TextView)findViewById(R.id.quentity);
         total = (TextView)findViewById(R.id.total);
         simpleList = (ListView) findViewById(R.id.list_view);
         customAdapter = new Product_List_Adapter(getApplicationContext(), manager.productList);
         simpleList.setAdapter(customAdapter);
-
         product_name = (TextView)findViewById(R.id.product_type);
         builder = new AlertDialog.Builder(this);
         simpleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -157,6 +149,7 @@ public class MainActivity extends AppCompatActivity  {
                 builder.setTitle("Thank You for your purchase");
                 builder.setMessage("Your purchase is "+ q  + " " + p + " for " + t);
                 builder.show();
+                selected_Quentity.setText("");
             }
 
 

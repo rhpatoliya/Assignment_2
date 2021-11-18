@@ -33,25 +33,25 @@ public class ManagerPanelActivity extends AppCompatActivity {
             listOfHistory = this.getIntent().getExtras().getParcelableArrayList("historyList");
             stock = this.getIntent().getExtras().getParcelableArrayList("stock");
         }
-        final ActivityResultLauncher<Intent> restockActivityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK )  {
-                            // There are no request codes
-                            Intent data = result.getData();
-                            Bundle extra = data.getExtras();
-                            stock =  extra.getParcelableArrayList("stock");
-
-                            Intent returnIntent = new Intent();
-                            returnIntent.putParcelableArrayListExtra("stock",stock);
-                            setResult(Activity.RESULT_OK,returnIntent);
-
-
-                        }
-                    }
-                });
+//        final ActivityResultLauncher<Intent> restockActivityResultLauncher = registerForActivityResult(
+//                new ActivityResultContracts.StartActivityForResult(),
+//                new ActivityResultCallback<ActivityResult>() {
+//                    @Override
+//                    public void onActivityResult(ActivityResult result) {
+//                        if (result.getResultCode() == Activity.RESULT_OK )  {
+//                            // There are no request codes
+//                            Intent data = result.getData();
+//                            Bundle extra = data.getExtras();
+//                            stock =  extra.getParcelableArrayList("stock");
+//
+//                            Intent returnIntent = new Intent();
+//                            returnIntent.putParcelableArrayListExtra("stock",stock);
+//                            setResult(Activity.RESULT_OK,returnIntent);
+//
+//
+//                        }
+//                    }
+//                });
 
 
 
@@ -62,26 +62,26 @@ public class ManagerPanelActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent toHistory = new Intent(getApplicationContext(),HistoryListActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putParcelableArrayList("historyList", listOfHistory);
-                toHistory.putExtras(bundle);
+//                Bundle bundle = new Bundle();
+//                bundle.putParcelableArrayList("historyList", listOfHistory);
+//                toHistory.putExtras(bundle);
                 startActivity(toHistory);
             }
         });
-//        Button restock = (Button) findViewById(R.id.restockID);
-//        restock.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent toRestock = new Intent(getApplicationContext(),RestockActivity.class);
+        Button restock = (Button) findViewById(R.id.restockID);
+        restock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toRestock = new Intent(getApplicationContext(),RestockActivity.class);
 //                Bundle bundle = new Bundle();
 //                bundle.putParcelableArrayList("stock",stock);
 //                toRestock.putExtras(bundle);
-//                startActivity(toRestock);
-//               // restockActivityResultLauncher.launch(toRestock);
-//
-//
-//            }
-//        });
+                startActivity(toRestock);
+               // restockActivityResultLauncher.launch(toRestock);
+
+
+            }
+        });
    }
 
 }
