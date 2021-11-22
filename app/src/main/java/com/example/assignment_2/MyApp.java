@@ -2,7 +2,7 @@ package com.example.assignment_2;
 
 import android.app.Application;
 
-public class myApp extends Application {
+class myApp extends Application {
 
     private Store_Manager manager =  new Store_Manager();
 
